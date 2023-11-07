@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,7 +14,29 @@
         android:theme="@style/Theme.Work_weixin"
         tools:targetApi="31">
         <activity
+            android:name=".returnActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity_music"
+            android:exported="false" />
+
+        <service
+            android:name=".MyService1"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".MyService2"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
             android:name=".Activity1"
+            android:exported="false" />
+        <activity
+            android:name=".Activity2"
+            android:exported="false" />
+        <activity
+            android:name=".Activity3"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
