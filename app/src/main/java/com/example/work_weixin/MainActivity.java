@@ -9,11 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
-        fragment1=new Fragment1();
-        fragment2=new Fragment2();
-        fragment3=new Fragment3();
-        fragment4=new Fragment4();
+        fragment1=new diantai();
+        fragment2=new wode();
+        fragment3=new faxian();
+        fragment4=new sheqv();
 
         initLinearLayout();
         initBotton();

@@ -1,28 +1,25 @@
 package com.example.work_weixin;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 
-public class Myadapter1 extends RecyclerView.Adapter<Myadapter1.Myholder>{
+public class Myadapter_musicGather extends RecyclerView.Adapter<Myadapter_musicGather.Myholder>{
     Context context1;
     List<Integer> image_music1;
     View view;
 
 
     //传参
-    public Myadapter1(Context context, List<Integer> image_music) {
+    public Myadapter_musicGather(Context context, List<Integer> image_music) {
         context1 = context;
        image_music1=image_music;
     }
@@ -40,7 +37,7 @@ public class Myadapter1 extends RecyclerView.Adapter<Myadapter1.Myholder>{
     @Override
 
     //根据位置获取图片资源ID，并将其设置给ImageView
-    public void onBindViewHolder(@NonNull Myadapter1.Myholder holder, int position) {
+    public void onBindViewHolder(@NonNull Myadapter_musicGather.Myholder holder, int position) {
        int imageId =image_music1.get(position);
        holder.imageView.setImageResource(imageId);
 

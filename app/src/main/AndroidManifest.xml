@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Work_weixin"
         tools:targetApi="31">
         <activity
-            android:name=".returnActivity"
+            android:name=".musicDetails"
             android:exported="false" />
         <activity
             android:name=".activity_music"

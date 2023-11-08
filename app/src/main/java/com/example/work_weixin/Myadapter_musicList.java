@@ -3,7 +3,6 @@ package com.example.work_weixin;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -16,14 +15,14 @@ import java.util.List;
 
 
 
-public class Myadapter extends RecyclerView.Adapter<Myadapter.Myholder>{
+public class Myadapter_musicList extends RecyclerView.Adapter<Myadapter_musicList.Myholder>{
     Context context1;
     List<String> list1;
     View view;
 
 
     //传参
-    public Myadapter(Context context, List<String> list) {
+    public Myadapter_musicList(Context context, List<String> list) {
         context1 = context;
         list1 = list;
     }
@@ -39,13 +38,13 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.Myholder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Myadapter.Myholder holder, int position) {
+    public void onBindViewHolder(@NonNull Myadapter_musicList.Myholder holder, int position) {
         holder.textView.setText(list1.get(position));
         // 在点击事件发生时,使用intent跳转到详情页面,并传递对应数据
         holder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context1, returnActivity.class);
+                Intent intent = new Intent(context1, musicDetails.class);
                 //获取textview的值
                 String textvalue = holder.textView.getText().toString();
                 intent.putExtra("name", textvalue);
