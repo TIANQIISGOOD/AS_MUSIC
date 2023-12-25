@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -17,11 +19,18 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fm;
     private Fragment fragment1,fragment2,fragment3,fragment4;
     private LinearLayout linearLayout1,linearLayout2,linearLayout3,linearLayout4;
+    private CrawlMusic crawlMusic;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        context=this;
+        //在网络上爬取并保存音乐资源
+        Log.d("aa","ll");
+        crawlMusic=new CrawlMusic(context,"https://samplelib.com/zh/sample-mp3.html");
+        crawlMusic.getMusicData();
         //根据传入的code展示对应的fragment
         ActivityResultLauncher launcher=
                 registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -35,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
-        fragment1=new diantai();
+        fragment1=new yinyue();
         fragment2=new wode();
         fragment3=new faxian();
         fragment4=new sheqv();
@@ -43,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         initLinearLayout();
         initBotton();
         initFragment();
-        showFragment(0);
+        showFragment(1);
     }
     private void initLinearLayout(){
         linearLayout1=findViewById(R.id.LinearLayout1);

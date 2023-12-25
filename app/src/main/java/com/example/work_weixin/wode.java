@@ -3,6 +3,7 @@ package com.example.work_weixin;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,16 +15,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class wode extends Fragment implements Myadapter_musicList.OnItemDeleteListener{
+public class wode extends Fragment {
     RecyclerView recyclerView,recyclerView1;
-    List<String> list;
+    //键值对：类型：map
+    ArrayList<Music> list;
     List<Integer> image_music;
     Myadapter_musicList adapter;
     Myadapter_musicGather adapter1;
     Context context;
     View view;
+    MusicList myLike;
     @Override
     //界面列表展示
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,15 +53,17 @@ public class wode extends Fragment implements Myadapter_musicList.OnItemDeleteLi
         LinearLayoutManager manager1=new LinearLayoutManager(context);
         manager1.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView1.setLayoutManager(manager1);
-        //纵向歌曲列表
-        recyclerView = view.findViewById(R.id.recyclerview);
 
-        list=new ArrayList<>();
-        for (int i=0;i<20;i++)
-        {
-            list.add("音乐"+(i+1));
-        }
-        //将配适器设置给对应的 recyclerView
+
+
+        //纵向歌曲列表:此处展示的是"Love"歌单
+        recyclerView = view.findViewById(R.id.recyclerview);
+        //MusicList myLike;
+        //通过指定的歌单名称,构造一个MusicList实例
+        myLike=new MusicList(context,"Love");
+        //调用实例中的变量得到一个元素为 Music的ArrayList变量,传给配适器
+        list=myLike.musicList;
+        //将配适器设置给对应的 recyclerView,并传入相关变量
         adapter=new Myadapter_musicList(context,list);
         recyclerView.setAdapter(adapter);
         //布局管理
@@ -67,39 +74,39 @@ public class wode extends Fragment implements Myadapter_musicList.OnItemDeleteLi
 
         //将ItemTouchHelper与RecyclerView关联
         //监听删除动作:适配器通过onItemDeleteListener来回调监听器的方法。
-        adapter.setOnItemDeleteListener(this);
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(adapter.simpleCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerView);
+//        adapter.setOnItemDeleteListener(this);
+//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(adapter.simpleCallback);
+//        itemTouchHelper.attachToRecyclerView(recyclerView);
         return view;
 
     }
 
-    @Override
-    //实现接口回调,选择在此处是因为我们要删除的数据源于此处
-    public void onDelete(int position) {
-        //扩展:窗口弹出询问是否删除
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());//在当前Activity中展示
-        builder.setTitle("DELETE")//设置标题
-                .setMessage("Are you sure?")//设置提示语
-                        .setPositiveButton("YES!", new DialogInterface.OnClickListener() {//当确认时,发生点击事件删除&更新
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //删除
-                                list.remove(position);
-                                //更新
-                                adapter.notifyItemRemoved(position);
-                            }
-                        })
-                .setNegativeButton("NO~", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                })//当后悔时,点击了什么都不做
-                .show();//展示窗口
-
-
-    }
+//    @Override
+//    //实现接口回调,选择在此处是因为我们要删除的数据源于此处
+//    public void onDelete(int position) {
+//        //扩展:窗口弹出询问是否删除
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());//在当前Activity中展示
+//        builder.setTitle("DELETE")//设置标题
+//                .setMessage("Are you sure?")//设置提示语
+//                        .setPositiveButton("YES!", new DialogInterface.OnClickListener() {//当确认时,发生点击事件删除&更新
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                //删除
+//                                //myLike.removeMusic();
+//                                //更新
+//                                adapter.notifyItemRemoved(position);
+//                            }
+//                        })
+//                .setNegativeButton("NO~", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.dismiss();
+//                    }
+//                })//当后悔时,点击了什么都不做
+//                .show();//展示窗口
+//
+//
+//    }
 
 
 }

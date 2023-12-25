@@ -4,91 +4,138 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0DE91E63">
+    android:layout_gravity="center"
+    android:background="@drawable/black_border"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/music_back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:drawableLeft="@mipmap/backw"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <ImageView
+        android:id="@+id/previous"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/left"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.513" />
 
-    <TextView
-        android:id="@+id/music_name"
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.513" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerViewMusicList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:background="@color/white"
-        android:text="音乐名"
-        android:textColor="@color/black"
-        android:textSize="44sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:background="#3B000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/music_back" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonMusicList" />
+
+    <TextView
+        android:id="@+id/textMusicName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="音乐"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.194" />
+
+    <ImageView
+        android:id="@+id/imageTUZI"
+        android:layout_width="238dp"
+        android:layout_height="270dp"
+        android:src="@drawable/tuzi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.531" />
 
     <ImageButton
-        android:id="@+id/music_image"
-        android:layout_width="168dp"
-        android:layout_height="154dp"
-        android:layout_marginTop="44dp"
+        android:id="@+id/imageButtonMusicList"
+        android:layout_width="67dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
         android:src="@mipmap/like"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/music_name" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/music_context"
-        android:layout_width="222dp"
-        android:layout_height="228dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/black_border"
-        android:gravity="center"
-        android:text="歌曲内容"
+    <ImageView
+        android:id="@+id/shoucang"
+        android:layout_width="57dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:src="@drawable/shoucang"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/music_image" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageTUZI">
 
-        <ImageButton
-            android:id="@+id/music_button_left"
+        <TextView
+            android:id="@+id/begin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@mipmap/skip_previous"
-            android:background="#E6000000"/>
+            android:gravity="center"
+            android:textSize="15sp"
+            android:text="begin" />
 
-        <ImageButton
-            android:id="@+id/music_button_stop"
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
+            android:layout_height="26dp" />
+
+        <TextView
+            android:id="@+id/end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@mipmap/stopw"
-            android:background="#E91E63"/>
-
-        <ImageButton
-            android:id="@+id/music_button_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@mipmap/skip_next"
-            android:background="@color/black"/>
+            android:gravity="center"
+            android:textSize="15sp"
+            android:text="end" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textMusicAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="作者"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageTUZI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textMusicName"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
